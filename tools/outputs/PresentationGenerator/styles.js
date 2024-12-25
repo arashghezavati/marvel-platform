@@ -1,58 +1,89 @@
 const styles = {
-    mainGridProps: {
-      container: true,
-      item: true,
-      mobileSmall: 12,
-      rowGap: 4,
-      justifyContent: 'center',
-      alignItems: 'center',
+  mainGridProps: {
+    container: true,
+    item: true,
+    mobileSmall: 12,
+    rowGap: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    px: 4,
+  },
+  slidesGridProps: {
+    container: true,
+    item: true,
+    mobileSmall: 12,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    rowGap: 4,
+  },
+  slideGridProps: {
+    container: true,
+    item: true,
+    gap: 2,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    px: 4,
+    py: 6,
+    sx: {
+      background: 'linear-gradient(145deg, #0F0E14, #1C1233)',
+      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+      border: '2px solid #2C223F',
+      borderRadius: '15px',
+      color: 'white',
     },
-    titleGridProps: {
-      container: true,
-      item: true,
-      mobileSmall: 12,
-      justifyContent: 'flex-start',
-      alignItems: 'center',
+  },
+  slideLabelProps: {
+    fontFamily: 'Satoshi Bold',
+    fontSize: { laptop: '16px', desktop: '18px' },
+    color: '#AC92FF',
+    mb: 2, // Margin below label
+    textAlign: 'center',
+  },
+  titleProps: {
+    fontFamily: 'Satoshi Bold',
+    fontSize: { mobileSmall: '18px', laptop: '20px', desktop: '22px' },
+    textAlign: 'center',
+    color: '#EAEAEA',
+    mb: 2,
+  },
+  contentProps: {
+    fontFamily: 'Satoshi Regular',
+    fontSize: { mobileSmall: '16px', laptop: '18px', desktop: '20px' },
+    textAlign: 'center',
+    color: '#D6D6D6',
+    lineHeight: '1.5',
+    mb: 3,
+  },
+  suggestionsProps: {
+    fontFamily: 'Satoshi Regular',
+    fontSize: { mobileSmall: '14px', laptop: '16px', desktop: '18px' },
+    color: '#9E9E9E',
+    textAlign: 'center',
+    fontStyle: 'italic',
+  },
+  exportButtonGridProps: {
+    container: true,
+    item: true,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 5,
+  },
+  exportButtonStyle: {
+    backgroundColor: 'linear-gradient(135deg, #6C63FF, #5750FF)',
+    color: 'white',
+    padding: '12px 24px',
+    fontSize: '16px',
+    borderRadius: '8px',
+    textTransform: 'none',
+    fontFamily: 'Satoshi Bold',
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
+    ':hover': {
+      backgroundColor: '#4E4AFF',
+      transform: 'scale(1.05)',
+      transition: 'all 0.3s ease',
     },
-    titleProps: {
-      fontFamily: 'Satoshi Bold',
-      fontSize: { laptop: '20px', desktop: '24px' },
-    },
-    questionsGridProps: {
-      container: true,
-      item: true,
-      mobileSmall: 12,
-      justifyContent: 'center',
-      alignItems: 'center',
-      rowGap: 3,
-    },
-    questionGridProps: {
-      container: true,
-      item: true,
-      gap: 2,
-      mobileSmall: 8,
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      px: 6,
-      py: 10,
-      sx: {
-        background: '#0F0E14',
-        border: '2px solid #1C1233',
-        borderRadius: '20px',
-        color: 'white',
-      },
-    },
-    questionTitleProps: {
-      fontFamily: 'Satoshi Bold',
-      fontSize: { laptop: '18px', desktop: '20px' },
-    },
-    choiceProps: {
-      fontFamily: 'Satoshi Regular',
-      fontSize: { laptop: '18px', desktop: '20px' },
-      textAlign: 'center',
-    },
-  };
-  
-  export default styles;
-  
+  },
+};
+
+export default styles;

@@ -1,23 +1,58 @@
-import { Fade, Grid, Typography } from '@mui/material';
+import { Fade, Grid, Typography, Button } from '@mui/material';
 import { useSelector } from 'react-redux';
+import FileSaver from 'file-saver';
 import styles from './styles';
 
 const PresentationGenerator = () => {
   const { response } = useSelector((state) => state.tools);
 
-  const renderSlide = (slide, index) => (
-    <Grid key={`slide-${index}`} {...styles.slideGridProps}>
-      <Typography {...styles.titleProps}>{slide.title}</Typography>
-      <Typography {...styles.contentProps}>{slide.content}</Typography>
-      {slide.suggestions && (
-        <Typography {...styles.suggestionsProps}>{slide.suggestions}</Typography>
-      )}
-    </Grid>
-  );
+  const handleExport = () => {
+    if (!response?.list_slides) return;
+
+    const textContent = response.list_slides
+      .map(
+        (slide, index) =>
+          `Slide ${index + 1}\nTitle: ${slide.title}\nContent: ${slide.content}\nSuggestions: ${slide.suggestions || 'None'}\n`
+      )
+      .join('\n\n');
+
+    const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8' });
+    FileSaver.saveAs(blob, 'presentation.txt');
+  };
 
   const renderSlides = () => (
-    <Grid {...styles.slidesGridProps}>
-      {response?.list_slides?.map((slide, index) => renderSlide(slide, index))}
+    <Grid {...styles.slidesGridProps} container spacing={4}>
+      {response?.list_slides?.map((slide, index) => (
+        <Grid
+          key={`slide-${index}`}
+          item
+          xs={12}
+          sm={6}
+          md={4} // Three slides per row on medium screens and above
+          sx={{
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            ':hover': {
+              transform: 'scale(1.05)',
+              boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.3)',
+            },
+          }}
+        >
+          <Fade in style={{ transitionDelay: `${index * 200}ms` }}>
+            <div>
+              <Typography {...styles.slideLabelProps}>Slide {index + 1}</Typography>
+              <Grid {...styles.slideGridProps}>
+                <Typography {...styles.titleProps}>{slide.title}</Typography>
+                <Typography {...styles.contentProps}>{slide.content}</Typography>
+                {slide.suggestions && (
+                  <Typography {...styles.suggestionsProps}>
+                    Suggestions: {slide.suggestions}
+                  </Typography>
+                )}
+              </Grid>
+            </div>
+          </Fade>
+        </Grid>
+      ))}
     </Grid>
   );
 
@@ -25,6 +60,18 @@ const PresentationGenerator = () => {
     <Fade in>
       <Grid {...styles.mainGridProps}>
         {response && renderSlides()}
+        {response?.list_slides && (
+          <Grid {...styles.exportButtonGridProps}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleExport}
+              style={styles.exportButtonStyle}
+            >
+              Export Slides as Text
+            </Button>
+          </Grid>
+        )}
       </Grid>
     </Fade>
   );
