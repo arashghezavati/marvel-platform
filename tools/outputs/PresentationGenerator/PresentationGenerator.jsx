@@ -4,6 +4,16 @@ import { useSelector } from 'react-redux';
 import FileSaver from 'file-saver';
 import styles from './styles';
 
+/**
+ * PresentationGenerator component renders a list of slides generated from the response data.
+ * It fetches the slide data from the Redux store (`tools` slice) and displays each slide
+ * with its title, content, and suggestions in a styled grid layout.
+ * 
+ * The component provides an option to export the slides as a text file using the FileSaver library.
+ * Material-UI's Grid, Typography, Fade, and Button components are utilized for styling, 
+ * animations, and interactivity.
+ */
+
 const PresentationGenerator = () => {
   const { response } = useSelector((state) => state.tools);
 
