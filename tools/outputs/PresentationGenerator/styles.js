@@ -2,7 +2,7 @@ const styles = {
   mainGridProps: {
     container: true,
     item: true,
-    mobileSmall: 12,
+    xs: 12, // Replace mobileSmall with xs
     rowGap: 4,
     justifyContent: 'center',
     alignItems: 'center',
@@ -11,7 +11,7 @@ const styles = {
   slidesGridProps: {
     container: true,
     item: true,
-    mobileSmall: 12,
+    xs: 12, // Replace mobileSmall with xs
     justifyContent: 'center',
     alignItems: 'flex-start',
     rowGap: 4,
@@ -35,21 +35,21 @@ const styles = {
   },
   slideLabelProps: {
     fontFamily: 'Satoshi Bold',
-    fontSize: { laptop: '16px', desktop: '18px' },
+    fontSize: { xs: '16px', sm: '18px' }, // Replace laptop/desktop with xs/sm
     color: '#AC92FF',
     mb: 2, // Margin below label
     textAlign: 'center',
   },
   titleProps: {
     fontFamily: 'Satoshi Bold',
-    fontSize: { mobileSmall: '18px', laptop: '20px', desktop: '22px' },
+    fontSize: { xs: '18px', sm: '20px', md: '22px' }, // Replace mobileSmall/laptop/desktop with xs/sm/md
     textAlign: 'center',
     color: '#EAEAEA',
     mb: 2,
   },
   contentProps: {
     fontFamily: 'Satoshi Regular',
-    fontSize: { mobileSmall: '16px', laptop: '18px', desktop: '20px' },
+    fontSize: { xs: '16px', sm: '18px', md: '20px' }, // Replace mobileSmall/laptop/desktop with xs/sm/md
     textAlign: 'center',
     color: '#D6D6D6',
     lineHeight: '1.5',
@@ -57,7 +57,7 @@ const styles = {
   },
   suggestionsProps: {
     fontFamily: 'Satoshi Regular',
-    fontSize: { mobileSmall: '14px', laptop: '16px', desktop: '18px' },
+    fontSize: { xs: '14px', sm: '16px', md: '18px' }, // Replace mobileSmall/laptop/desktop with xs/sm/md
     color: '#9E9E9E',
     textAlign: 'center',
     fontStyle: 'italic',
